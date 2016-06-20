@@ -1,0 +1,16 @@
+[
+{
+  "modid": "twoswordstyle",
+  "name": "TwoSwordStyle",
+  "description": "Add function to fight by two-sword-style.",
+  "version": "1.0.0",
+  "mcversion": "1.9.4",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["bbc_mc"],
+  "credits": "",
+  "logoFile": "logo/logo_twoswordstyle.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
