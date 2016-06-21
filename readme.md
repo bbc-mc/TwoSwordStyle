@@ -1,7 +1,10 @@
 #TwoSwordStyle
 
-- ���E�̎�Ɏ����Ă���A�C�e���ŁA���݂ɍU���ł��܂��B
+- 左右の手に持っているアイテムで、交互に攻撃できます。
 
-- �G�ɂ�����Ɨ�������t�ɐ؂�ւ��Ă��܂��̂ŁA�퓬�I���^�C�~���O�ɂ���ẮA�����肪�t�̂܂܂ɂȂ�܂��B
+- 敵にあたると利き手を逆に切り替えていますので、戦闘終了タイミングによっては、利き手が逆のままになります。
 
-- �ݒ�t�@�C���� twoSwordStyleGroup �ŁA�񓁈�������A�C�e����o�^�ł��܂��B
+- 設定ファイルの twoSwordStyleGroup[1-6] で、二刀扱いするアイテムを登録できます。
+
+- ダウンロード
+  - https://github.com/bbc-mc/TwoSwordStyle/releases/

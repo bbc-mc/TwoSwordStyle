@@ -44,8 +44,6 @@ public class EventTwoHand {
             //アイテムを入れ替える
             player.setHeldItem(EnumHand.MAIN_HAND, itemOff);
             player.setHeldItem(EnumHand.OFF_HAND, itemMain);
-        } else {
-            logInfo("not target weapon [" + player.getHeldItemOffhand().getItem().getRegistryName().getResourcePath() + "]");
         }
     }
 
@@ -55,9 +53,13 @@ public class EventTwoHand {
      @return
      */
     private boolean isPlayerEquipTargetWeapons(EntityPlayer player){
-        Item itemMain = player.getHeldItemMainhand().getItem();
-        Item itemOff = player.getHeldItemOffhand().getItem();
-
+        ItemStack itemStackMain = player.getHeldItemMainhand();
+        ItemStack itemStackOff = player.getHeldItemOffhand();
+        if(itemStackMain==null||itemStackOff==null){
+            return false;
+        }
+        Item itemMain = itemStackMain.getItem();
+        Item itemOff = itemStackOff.getItem();
         return isTargetWeapon(itemMain, itemOff, ConfigsCore.twoSwordStyleGroup1) ||
                 isTargetWeapon(itemMain, itemOff, ConfigsCore.twoSwordStyleGroup2) ||
                 isTargetWeapon(itemMain, itemOff, ConfigsCore.twoSwordStyleGroup3) ||
