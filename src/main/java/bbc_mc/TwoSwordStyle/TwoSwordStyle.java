@@ -7,14 +7,12 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /**
-    @author bbc_mc
-    @date 2016/06/19
- */
+ @author bbc_mc
+ @date 2016/06/19 */
 
 @Mod(
         modid = TwoSwordStyle.MODID,
-        name = TwoSwordStyle.MODNAME
-)
+        name = TwoSwordStyle.MODNAME)
 public class TwoSwordStyle {
     public static final String MODID = "twoswordstyle";
     public static final String MODNAME = "TwoSwordStyle";
@@ -22,7 +20,7 @@ public class TwoSwordStyle {
     @Mod.Instance(TwoSwordStyle.MODID)
     public static TwoSwordStyle instance;
 
-    public TwoSwordStyle(){
+    public TwoSwordStyle() {
         instance = this;
     }
 
@@ -36,6 +34,5 @@ public class TwoSwordStyle {
     public void init(FMLInitializationEvent event) {
         // Event登録
         EventsCore.configure();
-
     }
 }
