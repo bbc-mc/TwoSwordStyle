@@ -1,8 +1,6 @@
-//tasks.withType(Jar) {compileJava.options.encoding = 'UTF-8'}
-
-[compileJava, compileTestJava].each{
+[compileJava, compileTestJava].each {
     it.options.encoding = 'UTF-8'
-    //it.options.compilerArgs += ['-source', '1.8', '-target', '1.8']
+    it.options.compilerArgs += ['-source', '1.7', '-target', '1.7']
 }
 
 sourceSets.main {
@@ -10,4 +8,22 @@ sourceSets.main {
     resources.srcDirs project.projectDir.name
 }
 
-version = "1.9.4-1.0.1"
+//
+// Version settings
+//
+final String MC_VERSION = "1.9.4"
+final String RELEASE_VERSION = "1.1.0"
+
+//
+// Auto generate archive name with Git branch name
+//
+String branch = ["sh", "-c", "cd ../${project.projectDir.name}; git rev-parse --abbrev-ref HEAD"].execute().text.trim()
+
+if (branch == "master" || branch == "") {
+    version = MC_VERSION + "-" + RELEASE_VERSION
+} else {
+    version = MC_VERSION + "-" + RELEASE_VERSION + "-" + branch
+}
+println("MC_VERSION: ${MC_VERSION}")
+println("RELEASE   : ${RELEASE_VERSION}")
+println("Archive   : ${archivesBaseName}-${version}")

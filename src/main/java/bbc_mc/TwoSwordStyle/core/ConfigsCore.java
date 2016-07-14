@@ -2,17 +2,20 @@ package bbc_mc.TwoSwordStyle.core;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
  @author bbc_mc
- @date 2016/06/19
- */
+ @date 2016/06/19 */
 public class ConfigsCore {
     public static boolean isDebugMode;
+    public static boolean enableInitMainHandKey;
+    public static int keyInitMainHand;
 
+    // 二刀を発動するアイテムのグループ
     public static List<String> twoSwordStyleGroup1;
     public static List<String> twoSwordStyleGroup2;
     public static List<String> twoSwordStyleGroup3;
@@ -20,13 +23,15 @@ public class ConfigsCore {
     public static List<String> twoSwordStyleGroup5;
     public static List<String> twoSwordStyleGroup6;
 
-    public static void configure(FMLPreInitializationEvent event){
+    public static void configure(FMLPreInitializationEvent event) {
         Configuration conf = new Configuration(event.getSuggestedConfigurationFile());
-        try{
+        try {
             // 設定読出し
             conf.load();
 
-            isDebugMode = conf.getBoolean("debugMode", "mod", false, "B:isDebugMode");
+            isDebugMode = conf.getBoolean("debugMode", "system", false, "B:isDebugMode");
+            enableInitMainHandKey = conf.getBoolean("enableInitMainHandKey", "system", true, "B");
+            keyInitMainHand = conf.get("keyInitMainHand", "system", Keyboard.KEY_F, "I:Key setting for initialize MainHand [default: F ]").getInt();
 
             twoSwordStyleGroup1 = Arrays.asList((conf.getString("twoSwordStyleGroup1", "mod", "wooden_sword,stone_sword,iron_sword,golden_sword,diamond_sword", "")).split(",", 0));
             twoSwordStyleGroup2 = Arrays.asList((conf.getString("twoSwordStyleGroup2", "mod", "wooden_axe,stone_axe,iron_axe,golden_axe,diamond_axe", "")).split(",", 0));
@@ -35,9 +40,9 @@ public class ConfigsCore {
             twoSwordStyleGroup5 = Arrays.asList((conf.getString("twoSwordStyleGroup5", "mod", "snowball", "")).split(",", 0));
             twoSwordStyleGroup6 = Arrays.asList((conf.getString("twoSwordStyleGroup6", "mod", "", "")).split(",", 0));
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (conf.hasChanged()) {
                 conf.save();
             }
