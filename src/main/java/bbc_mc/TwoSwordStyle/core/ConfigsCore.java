@@ -2,6 +2,7 @@ package bbc_mc.TwoSwordStyle.core;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class ConfigsCore {
     public static boolean isDebugMode;
     public static boolean enableInitMainHandKey;
+    public static int keyInitMainHand;
 
     // 二刀を発動するアイテムのグループ
     public static List<String> twoSwordStyleGroup1;
@@ -29,6 +31,7 @@ public class ConfigsCore {
 
             isDebugMode = conf.getBoolean("debugMode", "system", false, "B:isDebugMode");
             enableInitMainHandKey = conf.getBoolean("enableInitMainHandKey", "system", true, "B");
+            keyInitMainHand = conf.get("keyInitMainHand", "system", Keyboard.KEY_F, "I:Key setting for initialize MainHand [default: F ]").getInt();
 
             twoSwordStyleGroup1 = Arrays.asList((conf.getString("twoSwordStyleGroup1", "mod", "wooden_sword,stone_sword,iron_sword,golden_sword,diamond_sword", "")).split(",", 0));
             twoSwordStyleGroup2 = Arrays.asList((conf.getString("twoSwordStyleGroup2", "mod", "wooden_axe,stone_axe,iron_axe,golden_axe,diamond_axe", "")).split(",", 0));

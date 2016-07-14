@@ -16,7 +16,7 @@ public class EventKeyInput {
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {
-        if (Keyboard.isKeyDown(Keyboard.KEY_F)) {
+        if (ConfigsCore.enableInitMainHandKey && Keyboard.isKeyDown(ConfigsCore.keyInitMainHand)) {
             EntityPlayer player = FMLClientHandler.instance().getClientPlayerEntity();
             if (player != null) {
                 EnumHandSide side = FMLClientHandler.instance().getClient().gameSettings.mainHand;
